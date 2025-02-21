@@ -44,7 +44,13 @@ public UsuarioDTO converterUsuarioParaUsuarioDTO(Usuario usuario) {
         usuarioDTO.setVerificado(usuario.getVerificado());
         return usuarioDTO;
     }
+    public Usuario buscarUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id).orElseThrow(() ->new IllegalArgumentException("Usuário não encontrado"));
+    }
+
+    public UsuarioDTO buscarUsuarioPorEmail(String email) {
+        return converterUsuarioParaUsuarioDTO(usuarioRepository.findByEmail(email).orElseThrow(() ->new IllegalArgumentException("Usuário não encontrado")));
+    }
+
 }
-
-
 

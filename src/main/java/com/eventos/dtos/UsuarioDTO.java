@@ -15,6 +15,8 @@ public class UsuarioDTO {
     private String perfil;
     private Boolean  Verificado;
 
+    public UsuarioDTO () {}
+
     public UsuarioDTO(Usuario usuario) {
         this.id = usuario.getId();
         this.nome = usuario.getNome();
@@ -25,10 +27,6 @@ public class UsuarioDTO {
         this.perfil = usuario.getPerfil();
         this.Verificado = usuario.getVerificado();
     }
-
-    public UsuarioDTO() {
-    }
-
 
 
     public Long getId() {
