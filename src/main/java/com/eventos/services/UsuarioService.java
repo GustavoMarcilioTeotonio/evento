@@ -4,7 +4,12 @@ import com.eventos.dtos.UsuarioDTO;
 import com.eventos.models.Usuario;
 import com.eventos.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import static java.util.Objects.isNull;
 
 @Service
 public class UsuarioService {
@@ -32,8 +37,9 @@ public class UsuarioService {
         return usuario;
     }
 
+
 public UsuarioDTO converterUsuarioParaUsuarioDTO(Usuario usuario) {
-        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario);
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setId(usuario.getId());
         usuarioDTO.setNome(usuario.getNome());
         usuarioDTO.setEmail(usuario.getEmail());
@@ -50,7 +56,23 @@ public UsuarioDTO converterUsuarioParaUsuarioDTO(Usuario usuario) {
 
     public UsuarioDTO buscarUsuarioPorEmail(String email) {
         return converterUsuarioParaUsuarioDTO(usuarioRepository.findByEmail(email).orElseThrow(() ->new IllegalArgumentException("Usuário não encontrado")));
+
     }
 
+    public UsuarioDTO atualizarUsuario(UsuarioDTO usuarioDTO) {
+        if (isNull(usuarioDTO.getId())) {
+            throw new IllegalArgumentException("Usuário não encontrado");
+        }
+         Usuario usuario = usuarioRepository.findById(usuarioDTO.getId()).orElseThrow(() ->new IllegalArgumentException("Usuário não encontrado"));
+
+        usuario = converterUsuarioDTOParaUsuario(usuarioDTO);
+        usuario = usuarioRepository.save(usuario);
+
+        return converterUsuarioParaUsuarioDTO(usuario);
+    }
+
+
+    public void deletarUsuario(Long id) {
+    }
 }
 
