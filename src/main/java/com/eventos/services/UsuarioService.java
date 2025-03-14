@@ -32,7 +32,7 @@ public class UsuarioService {
         usuario.setSenha(usuarioDTO.getSenha());
         usuario.setCpf(usuarioDTO.getCpf());
         usuario.setDataNascimento(usuarioDTO.getDataNascimento());
-        usuario.setPerfil(usuarioDTO.getPerfil());
+        usuario.setPerfis(usuarioDTO.getPerfis());
         usuario.setVerificado(usuarioDTO.getVerificado());
         return usuario;
     }
@@ -46,7 +46,7 @@ public UsuarioDTO converterUsuarioParaUsuarioDTO(Usuario usuario) {
         usuarioDTO.setSenha(usuario.getSenha());
         usuarioDTO.setCpf(usuario.getCpf());
         usuarioDTO.setDataNascimento(usuario.getDataNascimento());
-        usuarioDTO.setPerfil(usuario.getPerfil());
+        usuarioDTO.setPerfis(usuario.getPerfis());
         usuarioDTO.setVerificado(usuario.getVerificado());
         return usuarioDTO;
     }
