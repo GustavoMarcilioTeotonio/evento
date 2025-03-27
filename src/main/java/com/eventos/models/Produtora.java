@@ -1,6 +1,5 @@
 package com.eventos.models;
 
-import com.eventos.dtos.ProdutoraDTO;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -17,7 +16,7 @@ public class Produtora {
     @Column(name = "cpf_cnpj", unique = true)
     private String cpfCnpj;
 
-    public Produtora(ProdutoraDTO produtoraDTO) {}
+    public Produtora() {}
 
     public Produtora(Long id, String nome, String cpfCnpj) {
         this.id = id;
@@ -60,6 +59,4 @@ public class Produtora {
     public int hashCode() {
         return Objects.hash(id, nome, cpfCnpj);
     }
-
-
 }

@@ -3,13 +3,11 @@ package com.eventos.dtos;
 import jakarta.persistence.Column;
 
 public class ProdutoraDTO {
-
     private Long id;
     private String nome;
     private String cpfCnpj;
 
-    public ProdutoraDTO() {
-    }
+    public ProdutoraDTO() {}
 
     public Long getId() {
         return id;
@@ -35,3 +33,4 @@ public class ProdutoraDTO {
         this.cpfCnpj = cpfCnpj;
     }
 }
+
